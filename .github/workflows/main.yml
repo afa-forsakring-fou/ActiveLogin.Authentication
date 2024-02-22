@@ -24,7 +24,7 @@ jobs:
           dotnet-version: 6.0.x
           source-url: https://nuget.pkg.github.com/afa-forsakring-fou/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.NUGET_PACKAGE_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       #- name: Authenticate with github
       #  run: dotnet nuget add source --username flerpo --password ${{ secrets.NUGET_PACKAGE_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/afa-forsakring-fou/index.json"
 
@@ -34,4 +34,4 @@ jobs:
         run: dotnet pack src/ActiveLogin.Authentication.GrandId.AspNetCore --configuration Release /p:Version=2.0.0.${{ github.run_number }}
 
       - name: Publish Core-nuget
-        run: dotnet nuget push "src/ActiveLogin.Authentication.GrandId.AspNetCore/bin/Release/ActiveLogin.Authentication.GrandId.AspNetCore.2.0.0.${{ github.run_number }}.nupkg" --api-key ${{ secrets.NUGET_PACKAGE_TOKEN }}
+        run: dotnet nuget push "src/ActiveLogin.Authentication.GrandId.AspNetCore/bin/Release/ActiveLogin.Authentication.GrandId.AspNetCore.2.0.0.${{ github.run_number }}.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }}
