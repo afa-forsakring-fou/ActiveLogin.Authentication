@@ -31,7 +31,7 @@ jobs:
       - name: Restore dependencies Core
         run: dotnet restore
       - name: Package Core
-        run: dotnet pack --configuration Release /p:Version=1.0.0.${{ github.run_number }}
+        run: dotnet pack src/ActiveLogin.Authentication.GrandId.AspNetCore --configuration Release /p:Version=2.0.0.${{ github.run_number }}
 
       - name: Publish Core-nuget
-        run: dotnet nuget push "src/ActiveLogin.Authentication.GrandId.AspNetCore/bin/Release/ActiveLogin.Authentication.GrandId.AspNetCore.1.0.0.${{ github.run_number }}.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push "src/ActiveLogin.Authentication.GrandId.AspNetCore/bin/Release/ActiveLogin.Authentication.GrandId.AspNetCore.2.0.0.${{ github.run_number }}.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }}
