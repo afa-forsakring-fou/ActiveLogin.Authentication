@@ -1,0 +1,37 @@
+# will maybe be changed to use repo github-actions later
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+name: Package and publish Nugets
+
+jobs:
+  Package:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v3.0.2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3.0.3
+        with:
+          dotnet-version: 6.0.x
+          source-url: https://nuget.pkg.github.com/afa-forsakring-fou/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      #- name: Authenticate with github
+      #  run: dotnet nuget add source --username flerpo --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/afa-forsakring-fou/index.json"
+
+      - name: Restore dependencies Core
+        run: dotnet restore
+      - name: Package Core
+        run: dotnet pack --configuration Release /p:Version=1.0.0.${{ github.run_number }}
+
+      - name: Publish Core-nuget
+        run: dotnet nuget push "src/ActiveLogin.Authentication.GrandId.AspNetCore/bin/Release/ActiveLogin.Authentication.GrandId.AspNetCore.1.0.0.${{ github.run_number }}.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }}
