@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ActiveLogin.Authentication.GrandId.AspNetCore\ActiveLogin.Authentication.GrandId.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\src\ActiveLogin.Authentication.GrandId.AspNetCore\Fou.ActiveLogin.Authentication.GrandId.AspNetCore.csproj" />
   </ItemGroup>
 
 </Project>

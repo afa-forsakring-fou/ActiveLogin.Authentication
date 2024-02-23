@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ActiveLogin.Authentication.GrandId.Api\ActiveLogin.Authentication.GrandId.Api.csproj" />
+    <ProjectReference Include="..\..\src\ActiveLogin.Authentication.GrandId.Api\Fou.ActiveLogin.Authentication.GrandId.Api.csproj" />
   </ItemGroup>
 
 </Project>

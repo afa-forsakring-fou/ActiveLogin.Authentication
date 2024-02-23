@@ -12,14 +12,6 @@
         -->
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
-        <PackageId>$(AssemblyName)</PackageId>
-
-        <VersionPrefix>6.0.3</VersionPrefix>
-        <!--<VersionSuffix>rc-1</VersionSuffix>-->
-        <AssemblyVersion>6.0.0.0</AssemblyVersion>
-        <FileVersion Condition="'$(BUILD_BUILDNUMBER)' == ''">$(VersionPrefix).0</FileVersion>
-        <FileVersion Condition="'$(BUILD_BUILDNUMBER)' != ''">$(VersionPrefix).$(BUILD_BUILDNUMBER)</FileVersion>
-
         <Authors>Active Solution;Peter Örneholm;Elin Fokine;Tobias Lolax</Authors>
         <Company>Active Solution</Company>
         <Copyright>Copyright © 2018-2022 Active Solution</Copyright>
