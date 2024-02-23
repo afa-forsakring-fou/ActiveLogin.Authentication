@@ -28,10 +28,13 @@ jobs:
       #- name: Authenticate with github
       #  run: dotnet nuget add source --username flerpo --password ${{ secrets.NUGET_PACKAGE_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/afa-forsakring-fou/index.json"
 
-      - name: Restore dependencies Core
+      - name: Restore dependencies
         run: dotnet restore
-      - name: Package Core
+      - name: Pack code
         run: dotnet pack --configuration Release /p:Version=2.0.0.${{ github.run_number }}
 
-      - name: Publish Core-nuget
+      - name: Publish AspnetCore-nuget
         run: dotnet nuget push "src/ActiveLogin.Authentication.GrandId.AspNetCore/bin/Release/Fou.ActiveLogin.Authentication.GrandId.AspNetCore.2.0.0.${{ github.run_number }}.nupkg" --api-key ${{ secrets.PACKAGE_TOKEN }}
+      
+      - name: Publish Api-nuget
+        run: dotnet nuget push "src/ActiveLogin.Authentication.GrandId.Api/bin/Release/Fou.ActiveLogin.Authentication.GrandId.Api.2.0.0.${{ github.run_number }}.nupkg" --api-key ${{ secrets.PACKAGE_TOKEN }}
