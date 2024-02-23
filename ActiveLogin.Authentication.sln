@@ -42,9 +42,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{7D32EB
 		docs\images\active-login-monitor-screenshot_1.png = docs\images\active-login-monitor-screenshot_1.png
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fou.ActiveLogin.Authentication.GrandId.Api", "src\ActiveLogin.Authentication.GrandId.Api\ActiveLogin.Authentication.GrandId.Api.csproj", "{00C97046-36F3-4431-9FC8-A2EED39B3EA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fou.ActiveLogin.Authentication.GrandId.Api", "src\ActiveLogin.Authentication.GrandId.Api\Fou.ActiveLogin.Authentication.GrandId.Api.csproj", "{00C97046-36F3-4431-9FC8-A2EED39B3EA9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fou.ActiveLogin.Authentication.GrandId.AspNetCore", "src\ActiveLogin.Authentication.GrandId.AspNetCore\ActiveLogin.Authentication.GrandId.AspNetCore.csproj", "{A69DFAF3-21F8-4948-BD75-A3ECBB9117CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fou.ActiveLogin.Authentication.GrandId.AspNetCore", "src\ActiveLogin.Authentication.GrandId.AspNetCore\Fou.ActiveLogin.Authentication.GrandId.AspNetCore.csproj", "{A69DFAF3-21F8-4948-BD75-A3ECBB9117CF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActiveLogin.Authentication.GrandId.Api.Test", "test\ActiveLogin.Authentication.GrandId.Api.Test\ActiveLogin.Authentication.GrandId.Api.Test.csproj", "{1753396A-AB3D-485A-9C60-203E2F128577}"
 EndProject
