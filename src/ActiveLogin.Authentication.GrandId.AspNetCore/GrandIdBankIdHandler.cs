@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Threading.Tasks;
+
 using ActiveLogin.Authentication.GrandId.Api;
 using ActiveLogin.Authentication.GrandId.Api.Models;
 using ActiveLogin.Authentication.GrandId.AspNetCore.Models;
 using ActiveLogin.Authentication.GrandId.AspNetCore.Serialization;
 using ActiveLogin.Identity.Swedish;
 using ActiveLogin.Identity.Swedish.Extensions;
+
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -151,7 +149,7 @@ public class GrandIdBankIdHandler : GrandIdHandler<GrandIdBankIdOptions, BankIdG
             new Claim(GrandIdClaimTypes.FamilyName, loginResult.UserAttributes.Surname),
             new Claim(GrandIdClaimTypes.GivenName, loginResult.UserAttributes.GivenName),
 
-            new Claim(GrandIdClaimTypes.SwedishPersonalIdentityNumber, personalIdentityNumber.To10DigitString())
+            new Claim(GrandIdClaimTypes.SwedishPersonalIdentityNumber, personalIdentityNumber.To12DigitString())
         };
 
         if (Options.IssueGenderClaim)
