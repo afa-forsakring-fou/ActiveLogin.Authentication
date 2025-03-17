@@ -149,7 +149,9 @@ public class GrandIdBankIdHandler : GrandIdHandler<GrandIdBankIdOptions, BankIdG
             throw new ArgumentNullException(nameof(loginResult.UserAttributes));
         }
 
+        Console.WriteLine("Before parsing personal number");
         var personalIdentityNumber = PersonalIdentityNumber.Parse(loginResult.UserAttributes.PersonalIdentityNumber);
+        Console.WriteLine("After parsing personal number");
         var claims = new List<Claim>
         {
             new Claim(GrandIdClaimTypes.Subject, personalIdentityNumber.To12DigitString()),
