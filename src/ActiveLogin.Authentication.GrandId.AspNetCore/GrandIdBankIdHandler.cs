@@ -144,14 +144,15 @@ public class GrandIdBankIdHandler : GrandIdHandler<GrandIdBankIdOptions, BankIdG
 
     protected override IEnumerable<Claim> GetClaims(BankIdGetSessionResponse loginResult)
     {
+        
         if (loginResult.UserAttributes == null)
         {
             throw new ArgumentNullException(nameof(loginResult.UserAttributes));
         }
-
+        Console.WriteLine($"Response Deserialized: given: {loginResult.UserAttributes.GivenName}, name: {loginResult.UserAttributes.Name}, surname: {loginResult.UserAttributes.Surname}, identitynr: {loginResult.UserAttributes.PersonalIdentityNumber}");
         Console.WriteLine("Before parsing personal number");
         var personalIdentityNumber = PersonalIdentityNumber.Parse(loginResult.UserAttributes.PersonalIdentityNumber);
-        Console.WriteLine("After parsing personal number");
+        Console.WriteLine($"After parsing personal number: {personalIdentityNumber}");
         var claims = new List<Claim>
         {
             new Claim(GrandIdClaimTypes.Subject, personalIdentityNumber.To12DigitString()),
