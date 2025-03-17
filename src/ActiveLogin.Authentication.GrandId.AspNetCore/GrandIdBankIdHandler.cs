@@ -128,7 +128,7 @@ public class GrandIdBankIdHandler : GrandIdHandler<GrandIdBankIdOptions, BankIdG
 
             if(sessionResponse.UserAttributes == null)
             {
-                Console.WriteLine("USER attributes was null");
+                Console.WriteLine("USER attributes was null, yes");
             }
 
             Console.WriteLine($"SessionResponse: {sessionResponse.UserAttributes}, {sessionResponse.SessionId}, {sessionResponse.Username}");
