@@ -37,6 +37,7 @@ public class GrandIdBankIdHandler : GrandIdHandler<GrandIdBankIdOptions, BankIdG
     {
         var personalIdentityNumber = GetPersonalIdentityNumber(properties);
         var request = GetBankIdFederatedLoginRequest(absoluteReturnUrl, Options, personalIdentityNumber);
+        Console.WriteLine($"Federated request: callback url: {request.CallbackUrl}, customer url: {request.CustomerUrl}");
 
         try
         {
@@ -51,6 +52,8 @@ public class GrandIdBankIdHandler : GrandIdHandler<GrandIdBankIdOptions, BankIdG
             {
                 throw new ArgumentNullException(nameof(federatedLoginResponse.RedirectUrl));
             }
+
+            Console.WriteLine($"FederatedLogin response: {federatedLoginResponse}, {federatedLoginResponse.RedirectUrl}");
 
             _logger.GrandIdBankIdFederatedLoginSuccess(absoluteReturnUrl, federatedLoginResponse.SessionId);
             return federatedLoginResponse.RedirectUrl;
@@ -123,6 +126,12 @@ public class GrandIdBankIdHandler : GrandIdHandler<GrandIdBankIdOptions, BankIdG
                 throw new ArgumentNullException(nameof(sessionResponse.SessionId));
             }
 
+            if(sessionResponse.UserAttributes == null)
+            {
+                Console.WriteLine("USER attributes was null");
+            }
+
+            Console.WriteLine($"SessionResponse: {sessionResponse.UserAttributes}, {sessionResponse.SessionId}, {sessionResponse.Username}");
             _logger.GrandIdBankIdGetSessionSuccess(sessionResponse.SessionId);
             return sessionResponse;
         }
