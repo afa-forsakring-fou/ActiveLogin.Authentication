@@ -50,9 +50,9 @@ public abstract class GrandIdHandler<TOptions, TGetSessionResponse> : RemoteAuth
 
             return HandleRequestResult.Success(ticket);
         }
-        catch
+        catch(Exception e)
         {
-            return HandleRequestResult.Fail("Failed to get session from GrandID.");
+            return HandleRequestResult.Fail($"Failed to get session from GrandID. {e}");
         }
     }
 
